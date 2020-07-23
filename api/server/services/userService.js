@@ -1,0 +1,83 @@
+import database from '../src/models';
+
+class userService{
+
+    static async login(username,pass){
+        try{
+            const user = await database.User.findOne({
+                where:{username: username},
+                raw:true
+            })
+            if(user['password']==pass){
+                return user["block"]
+            }else{
+                return null
+            }
+        }catch(error){
+            throw error
+        }
+    }
+
+    //retrieve info for a particular unit
+	static async getAUser(id){
+		try{
+			const user= await database.User.findOne({
+                where:{id:Number(id)}
+            })
+            return user
+		}catch(error){
+			throw error
+		}
+    }
+    
+    //add info for a user
+    static async addUser(data){
+        try{
+            const updatedItem=await database.User.create(data)
+            return updatedItem
+        }catch(error){
+            throw error
+        }
+    }
+
+
+    //delete unit info. Warning: use this with caution
+    static async deleteUser(id){
+        try{
+            const toDelete=await database.User.findOne({
+                where:{id:Number(id)}
+            })
+            if(toDelete){
+                const deletedItem=await database.User.destroy({
+                    where:{id:Number(id)}
+                })
+                return deletedItem
+            }
+            return null
+        }catch(error){
+            throw error
+        }
+    }
+
+
+    //update existing unit info
+    static async updateUser(id,data){
+        try{
+            const toUpdate= await database.User.findOne({
+                where:{id:Number(id)}
+            })
+            if(toUpdate){
+                const updatedItem = await database.User.update(data,{
+                    where:{id:Number(id)}
+                })
+                return updatedItem
+            }
+            return null
+        }catch(error){
+            throw error
+        }
+    }
+
+}
+
+export default userService;
