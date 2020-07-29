@@ -10,6 +10,7 @@ module.exports = {
       },
       unit_id:{
         type: Sequelize.INTEGER,
+        allowNull:false,
         references:{
           model:'units',
           key: 'id',

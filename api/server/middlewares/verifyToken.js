@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import config from '../config'
 
-let checkToken = (req, res, next) => {
+var verifyToken = function (req,res,next){
   let token = req.headers['x-access-token'] || req.headers['authorization']; // Express headers are auto converted to lowercase
   if(token){
     if (token.startsWith('Bearer ')) {
@@ -33,8 +33,4 @@ let checkToken = (req, res, next) => {
         message: 'Auth token is not supplied'
       });
   }
-};
-
-module.exports = {
-  checkToken: checkToken
 }

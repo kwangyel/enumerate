@@ -26,7 +26,7 @@ class unitService{
 
 
     //delete unit info. Warning: use this with caution
-    static async deleteResd(id){
+    static async deleteUnit(id){
         try{
             const toDelete=await database.Unit.findOne({
                 where:{id:Number(id)}

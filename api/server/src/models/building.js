@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const building = sequelize.define('building', {
     bldg_id:DataTypes.INTEGER,
     name_bldg: DataTypes.STRING,
-    name_bldg: DataTypes.STRING,
+    name_own: DataTypes.STRING,
     thram: DataTypes.STRING,
     owner: DataTypes.STRING,
     plot_no: DataTypes.STRING,

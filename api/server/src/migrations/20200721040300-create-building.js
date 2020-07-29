@@ -15,7 +15,7 @@ module.exports = {
       name_bldg: {
         type: Sequelize.STRING
       },
-      name_bldg: {
+      name_own: {
         type: Sequelize.STRING
       },
       thram: {

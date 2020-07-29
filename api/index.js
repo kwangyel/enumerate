@@ -4,6 +4,7 @@ import config from 'dotenv'
 import cors from 'cors'
 import enumRoutes from './server/routes/enumRoutes'
 import userRoutes from './server/routes/userRoutes'
+import checktoken from './server/middlewares/checkToken'
 
 config.config()
 
@@ -16,8 +17,11 @@ app.use(bodyparser.urlencoded({extended:false}))
 app.get('/',(req,res)=>{
 	res.send("Welcome to the enumerate API")
 })
+
+app.use('/enum',checktoken.checkToken,enumRoutes)
+// app.use('/enum',enumRoutes)
+
 app.use(userRoutes)
-app.use(enumRoutes)
 
 app.listen(port,()=>{
 	console.log(`server listening on port ${port}`)
