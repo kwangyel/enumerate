@@ -11,7 +11,7 @@ class mapController{
 			if(buildings.length > 0){
 				const result = buildings.map((row)=>{
 					let geojson=JSON.parse(row.st_asgeojson);
-					geojson.properties = {id: row.obejctid_1}
+					geojson.properties = {id: row.objectid_1}
 					return geojson;
 				})
 				util.setSuccess(200,'Buildings Retrieved',result);

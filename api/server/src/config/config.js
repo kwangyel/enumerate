@@ -4,10 +4,10 @@ module.exports={
 
 	  "development": {
 	    "username": "root",
-	    "password": "",
+	    "password": "covid@2020#",
 	    "database": "enumerate",
 	    "host": "127.0.0.1",
-	    "dialect": "mysql",
+	    "dialect": "postgres",
 	    "secret":process.env.SECRET,
 	  },
 	  "test": {

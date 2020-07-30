@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull:false,
         references:{
-          model:'units',
+          model:'Units',
           key: 'id',
           as: 'unit_id',
         }

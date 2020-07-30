@@ -6,6 +6,7 @@ import enumRoutes from './server/routes/enumRoutes'
 import userRoutes from './server/routes/userRoutes'
 import checktoken from './server/middlewares/checkToken'
 import uploadRoutes from './server/routes/uploadRoutes'
+import mapRoutes from './server/routes/mapRoutes'
 
 config.config()
 
