@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     user_id: DataTypes.INTEGER
   }, {});
   image.associate = function(models) {
+    image.belongsTo(models.building,{foreignKey:'bldg_id'})
     // associations can be defined here
   };
   return image;

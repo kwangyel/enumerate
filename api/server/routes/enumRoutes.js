@@ -1,5 +1,4 @@
 import {Router} from 'express';
-import checktoken from '../middlewares/checkToken'
 import buildingController from '../controllers/buildingController'
 import unitController from '../controllers/unitController'
 import resdController from '../controllers/resdController'
