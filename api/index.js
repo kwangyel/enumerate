@@ -23,7 +23,8 @@ app.get('/',(req,res)=>{
 app.use(express.static(__dirname + '/public'));
 
 //protected enum routes
-app.use('/enum',checktoken.checkToken,enumRoutes)
+//app.use('/enum',checktoken.checkToken,enumRoutes)
+app.use('/enum',enumRoutes)
 
 //login routes
 app.use(userRoutes)

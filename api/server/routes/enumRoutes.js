@@ -13,7 +13,7 @@ router.post('/update-building',buildingController.updateBldg)
 router.post('/update-unit',unitController.updateUnit)
 router.post('/update-resd',resdController.updateResd)
 
-router.get('/get-building',buildingController.getABldg)
+router.post('/get-building',buildingController.getABldg)
 router.get('/get-unit',unitController.getAUnit)
 router.get('/get-resd',resdController.getAResd)
 

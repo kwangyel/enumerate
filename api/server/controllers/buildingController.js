@@ -7,6 +7,10 @@ class buildingController{
     static async getABldg(req,res){
         try{
             const bid = req.body.bid;
+            if(!bid){
+                util.setError(404,"Bid not set");
+                util.send(res)
+            }
             const bldg = await buildingService.getABldg(bid);
             if(!bldg){
                 util.setError(404,"Not found")
