@@ -4,6 +4,20 @@ const util=new Util();
 
 class buildingController{
     //get a building by id
+    static async getAllBid(req,res){
+        try {
+            const data = await buildingService.getAllBid()
+            if(!data){
+                util.setError(404,"Not found")
+            }else{
+                util.setSuccess(200,"Found",data)
+            }
+            return util.send(res)
+        }catch(error){
+            util.setError(404,error)
+            return util.send(res)
+        }
+    }
     static async getABldg(req,res){
         try{
             const bid = req.body.bid;

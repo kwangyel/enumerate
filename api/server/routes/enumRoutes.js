@@ -16,5 +16,6 @@ router.post('/update-resd',resdController.updateResd)
 router.post('/get-building',buildingController.getABldg)
 router.get('/get-unit',unitController.getAUnit)
 router.get('/get-resd',resdController.getAResd)
+router.get('/get-all-bid',buildingController.getAllBid)
 
 export default router;

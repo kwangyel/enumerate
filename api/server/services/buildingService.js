@@ -2,6 +2,18 @@ import database from '../src/models';
 
 class buildingService{
 
+    static async getAllBid(){
+        try{
+            const data = await database.building.findAll({
+                attributes: ['bldg_id']
+            })
+            return data
+        }catch(error){
+            throw error
+        }
+
+    }
+
     //retrieve info for a particular building
 	static async getABldg(bldg_id){
 		try{
