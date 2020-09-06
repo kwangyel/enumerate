@@ -37,6 +37,7 @@ app.use('/map',mapRoutes)
 
 app.listen(port,()=>{
 	console.log(`server listening on port ${port}`)
+	console.log(process.env.SECRET_KEY)
 })
 
 export default app;

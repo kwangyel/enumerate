@@ -32,6 +32,9 @@ module.exports = {
       unit_use: {
         type: Sequelize.STRING
       },
+      remarks: {
+        type: Sequelize.TEXT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

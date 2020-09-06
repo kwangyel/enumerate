@@ -18,19 +18,13 @@ module.exports = {
       name_own: {
         type: Sequelize.STRING
       },
-      thram: {
+      asso_pos: {
         type: Sequelize.STRING
       },
-      owner: {
-        type: Sequelize.STRING
-      },
-      plot_no: {
+      exist_status: {
         type: Sequelize.STRING
       },
       year_const: {
-        type: Sequelize.STRING
-      },
-      year_renov: {
         type: Sequelize.STRING
       },
       floors: {
@@ -40,12 +34,6 @@ module.exports = {
         type: Sequelize.STRING
       },
       basement: {
-        type: Sequelize.STRING
-      },
-      exist_status: {
-        type: Sequelize.STRING
-      },
-      asso_pos: {
         type: Sequelize.STRING
       },
       facade: {
@@ -75,7 +63,10 @@ module.exports = {
       waste: {
         type: Sequelize.STRING
       },
-      waste_coll: {
+      waste_coll_dry: {
+        type: Sequelize.STRING
+      },
+      waste_coll_wet: {
         type: Sequelize.STRING
       },
       water: {
@@ -83,6 +74,12 @@ module.exports = {
       },
       bldg_use: {
         type: Sequelize.STRING
+      },
+      parking: {
+        type: Sequelize.STRING
+      },
+      remarks: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,

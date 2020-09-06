@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     income: DataTypes.DOUBLE,
     diff_abled: DataTypes.DOUBLE,
     mode: DataTypes.STRING,
+    mode_pvt: DataTypes.INTEGER,
     parking: DataTypes.STRING,
     pow: DataTypes.STRING,
     land_own: DataTypes.STRING,

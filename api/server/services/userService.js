@@ -1,4 +1,5 @@
 import database from '../src/models';
+import bcrypt from 'bcrypt'
 
 class userService{
 
@@ -8,11 +9,22 @@ class userService{
                 where:{username: username},
                 raw:true
             })
-            if(user['password']==pass){
-                return user["block"]
-            }else{
+            return null
+        }catch(error){
+            throw error
+        }
+    }
+
+    static async getPassHash(username){
+        try{
+            const user = await database.User.findOne({
+                where:{username : username},
+                raw:true
+            })
+            if(user==null){
                 return null
             }
+            return user['password']
         }catch(error){
             throw error
         }

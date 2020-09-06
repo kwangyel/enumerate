@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
-import config from '../config'
+// import config from ''
+// import configjosn from '../src/config/config'
 
 let checkToken = (req, res, next) => {
   let token = req.headers['x-access-token'] || req.headers['authorization']; // Express headers are auto converted to lowercase
@@ -10,7 +11,7 @@ let checkToken = (req, res, next) => {
     }
 
     if (token) {
-      jwt.verify(token, config.secret, (err, decoded) => {
+      jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
         if (err) {
           return res.json({
             success: false,
