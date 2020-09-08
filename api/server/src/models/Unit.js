@@ -1,17 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Unit = sequelize.define('Unit', {
-    bldg_id: DataTypes.INTEGER,
-    occup: DataTypes.STRING,
-    level: DataTypes.STRING,
-    owm: DataTypes.STRING,
-    rent: DataTypes.DOUBLE,
-    unit_use: DataTypes.STRING,
-    remarks: DataTypes.TEXT
+    unit_name: DataTypes.STRING,
+    use: DataTypes.STRING,
+    building_id: DataTypes.INTEGER
   }, {});
   Unit.associate = function(models) {
     // associations can be defined here
-    Unit.belongsTo(models.building,{foreignKey:'bldg_id'});
   };
   return Unit;
 };

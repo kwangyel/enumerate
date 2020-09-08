@@ -11,18 +11,18 @@ module.exports = {
       username: {
         type: Sequelize.STRING
       },
+      cid: {
+        type: Sequelize.BIGINT
+      },
       password: {
         type: Sequelize.STRING
       },
-      block: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });

@@ -15,10 +15,10 @@ class userService{
         }
     }
 
-    static async getPassHash(username){
+    static async getPassHash(cid){
         try{
             const user = await database.User.findOne({
-                where:{username : username},
+                where:{cid : cid},
                 raw:true
             })
             if(user==null){
@@ -31,10 +31,10 @@ class userService{
     }
 
     //retrieve info for a particular unit
-	static async getAUser(id){
+	static async getAUser(cid){
 		try{
 			const user= await database.User.findOne({
-                where:{id:Number(id)}
+                where:{cid:Number(cid)}
             })
             return user
 		}catch(error){

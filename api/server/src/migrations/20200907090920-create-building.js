@@ -1,51 +1,53 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Units', {
+    return queryInterface.createTable('Buildings', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      bldg_id:{
+      building_name: {
+        type: Sequelize.STRING
+      },
+      building_number: {
         type: Sequelize.INTEGER,
-        allowNull:false,
-        references:{
-          model:'buildings',
-          key: 'bldg_id',
-          as: 'bldg_id'
-        }
+        allowNull: false,
+        unique: true
       },
-      occup: {
+      owner_name: {
         type: Sequelize.STRING
       },
-      level: {
+      contact: {
+        type: Sequelize.BIGINT
+      },
+      use: {
         type: Sequelize.STRING
       },
-      owm: {
-        type: Sequelize.STRING
-      },
-      rent: {
+      lat: {
         type: Sequelize.DOUBLE
       },
-      unit_use: {
+      lng: {
+        type: Sequelize.DOUBLE
+      },
+      status: {
         type: Sequelize.STRING
       },
-      remarks: {
-        type: Sequelize.TEXT
+      sub_zone_id: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Units');
+    return queryInterface.dropTable('Buildings');
   }
 };

@@ -32,7 +32,7 @@ export default class Util {
       success: this.type,
       message: this.message,
       data: this.data,
-    };
+    }
 
     if (this.data) {
       return res.status(this.statusCode).json(result);

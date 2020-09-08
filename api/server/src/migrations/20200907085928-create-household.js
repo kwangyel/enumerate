@@ -1,57 +1,57 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('resd_occps', {
+    return queryInterface.createTable('Households', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      resd_id: {
+      hh_name: {
+        type: Sequelize.STRING
+      },
+      building_id:{
         type: Sequelize.INTEGER
       },
-      armed_force: {
+      contact: {
+        type: Sequelize.BIGINT
+      },
+      male_10: {
         type: Sequelize.INTEGER
       },
-      civil: {
+      female_10: {
         type: Sequelize.INTEGER
       },
-      farmer: {
+      male_10_60: {
         type: Sequelize.INTEGER
       },
-      H_wife: {
+      female_10_60: {
         type: Sequelize.INTEGER
       },
-      job_seeker: {
+      male_60: {
         type: Sequelize.INTEGER
       },
-      monk: {
+      female_60: {
         type: Sequelize.INTEGER
       },
-      pvt_emp: {
-        type: Sequelize.INTEGER
+      different_abled: {
+        type: Sequelize.STRING
       },
-      retiree: {
-        type: Sequelize.INTEGER
-      },
-      student: {
-        type: Sequelize.INTEGER
-      },
-      others: {
+      unit_id: {
         type: Sequelize.INTEGER
       },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('resd_occps');
+    return queryInterface.dropTable('Households');
   }
 };

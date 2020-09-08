@@ -1,40 +1,33 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('images', {
+    return queryInterface.createTable('Units', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      bldg_id:{
-        type: Sequelize.INTEGER,
-        allowNull:false,
-        references:{
-          model:'buildings',
-          key: 'bldg_id',
-          as: 'bldg_id'
-        }
-      },
-      src: {
-        allowNull:false,
+      unit_name: {
         type: Sequelize.STRING
       },
-      user_id: {
+      use: {
+        type: Sequelize.STRING
+      },
+      building_id: {
         type: Sequelize.INTEGER
       },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('images');
+    return queryInterface.dropTable('Units');
   }
 };

@@ -14,21 +14,21 @@ class userController{
     }
     static async login(req,res){
         try{
-            const username = req.body.username
+            const cid = req.body.cid
             const password = req.body.password
             
-            if(username && password){
-                const hash = await userService.getPassHash(username)
-                if(hash==null){
+            if(cid && password){
+                const user = await userService.getAUser(cid)
+                if(!user){
                     util.setFailure(200,"username or password incorrect")
                     return util.send(res)
                 }
 
-                let token = jwt.sign({username:username},
+                let token = jwt.sign({username:cid},
                     process.env.SECRET_KEY,
                     {expiresIn:"24h"})
                 
-                bcrypt.compare(password,hash,(err,ismatch)=>{
+                bcrypt.compare(password,user['password'],(err,ismatch)=>{
                     util.setData(null)
                     if(err){
                         console.log(err)
@@ -38,7 +38,9 @@ class userController{
                     if(ismatch){
                         util.setSuccess(200,"Logged in")
                         util.setData({
-                            token:token
+                            token:token,
+                            username:user['username'],
+                            id:user['id'],
                         })
                         return util.send(res)
                     }else{
