@@ -29,8 +29,8 @@ if(process.env.NODE_ENV == "production"){
 
 //basic starter middlewares
 app.use(cors())
-app.use(bodyparser.json())
-app.use(bodyparser.urlencoded({extended:false}))
+app.use(bodyparser.json({limit:'50mb'}))
+app.use(bodyparser.urlencoded({limit:'50mb',extended:false}))
 app.get('/',(req,res)=>{
 	res.send("Welcome to the enumerate API")
 })
