@@ -74,6 +74,29 @@ class atmController{
         }
     }
 
+    static async createBulkAtm(req,res){
+        const atms = req.body.atms
+        util.setData(null);
+
+        if(!atms){
+            util.setError(400,"data not set")
+            return util.send(res)
+        }
+        try{
+            const atm = await atmService.createBulkAtm(atms)
+            if(atm){
+                util.setSuccess(200,"Inserted atms")
+                return util.send(res)
+            }
+            util.setFailure(200,"Cannot create atsm")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(400,"error")
+            return util.send(res)
+        }
+    }
+
     static async deleteAtm(req,res){
         const {id} = req.params
 

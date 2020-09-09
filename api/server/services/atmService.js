@@ -38,6 +38,14 @@ class atmService{
             throw error
         }
     }
+    static async createBulkAtm(data){
+        try{
+            const atms = await database.Atm.bulkCreate(data)
+            return atms
+        }catch(error){
+            throw error
+        }
+    }
 
     static async deleteAtm(id){
         try{
