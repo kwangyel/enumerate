@@ -5,6 +5,29 @@ import { create } from 'domain';
 const util=new Util();
 
 class buildingController{
+    static async getBuildingJson(req,res){
+        const {zoneid} = req.params
+        try{
+            const buildings = await buildingService.getBuildingInZone(zoneid)
+            if(buildings.length){
+                const result = buildings.map((row)=>{
+                    let geojson = {"type":"Point"}
+                    geojson.properties = {building_id:row.id,status:row.status}
+                    geojson.coordinates = [row.lng,row.lat]
+                    return geojson
+                })
+                return res.json(result)
+            }
+            return res.json({
+                "msg":"error sending json"
+            })
+        }catch(err){
+            return res.json({
+                "msg":"error sending json"
+            })
+        }
+    }
+
     static async getBuildingInZone(req,res){
         const {zoneid} = req.params
         util.setData(null)
@@ -14,7 +37,12 @@ class buildingController{
             if(buildings.length){
                 util.setSuccess(200,"Got buildings")
                 util.setData(buildings)
-                return util.send(res)
+                buildings.map((row)=>{
+                    let geojson = {"type":"Point"}
+                    geojson.properties = {building_id:row.id,status:row.status}
+                    geojson.coordinates = [row.lng,row.lat]
+                    return geojson
+                })
             }
             util.setFailure(200,"No record found")
             return util.send(res)
