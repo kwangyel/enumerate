@@ -1,6 +1,6 @@
 import userService from '../services/userService'
 import jwt from 'jsonwebtoken'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import Util from '../utils/Utils'
 const util=new Util();
 

@@ -1,5 +1,5 @@
 import database from '../src/models';
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 class userService{
 
