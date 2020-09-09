@@ -16,6 +16,7 @@ class userController{
         try{
             const cid = req.body.cid
             const password = req.body.password
+            util.setData(null)
             
             if(cid && password){
                 const user = await userService.getAUser(cid)
@@ -29,7 +30,6 @@ class userController{
                     {expiresIn:"24h"})
                 
                 bcrypt.compare(password,user['password'],(err,ismatch)=>{
-                    util.setData(null)
                     if(err){
                         console.log(err)
                         util.setError(400,"an error occured")
