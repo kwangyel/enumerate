@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     unit_name: DataTypes.STRING,
     use: DataTypes.STRING,
     building_id: DataTypes.INTEGER,
-    user_id: DataTypes.INTEGER
+    user_id: DataTypes.INTEGER,
+    remarks: DataTypes.STRING
   }, {});
   Unit.associate = function(models) {
     // associations can be defined here
