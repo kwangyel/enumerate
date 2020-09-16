@@ -1,11 +1,9 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Building = sequelize.define('Building', {
-    building_name: DataTypes.STRING,
     building_number: DataTypes.INTEGER,
     owner_name: DataTypes.STRING,
-    contact: DataTypes.BIGINT,
-    use: DataTypes.STRING,
+    contact: DataTypes.STRING,
     lat: DataTypes.DOUBLE,
     lng: DataTypes.DOUBLE,
     status: DataTypes.STRING,

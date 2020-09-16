@@ -22,9 +22,28 @@ class buildingController{
                 "msg":"error sending json"
             })
         }catch(err){
+            console.log(err);
             return res.json({
                 "msg":"error sending json"
             })
+        }
+    }
+    static async markBuildingComplete(req,res){
+        const {id} = req.params
+        util.setData(null)
+
+        try{
+            const updated = await buildingService.markBuildingComplete(id);
+            if(updated){
+                util.setSuccess(200,"Got buildings")
+                return util.send(res)
+            }
+            util.setFailure(200,"cant update")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"error")
+            return util.send(res)
         }
     }
 
@@ -84,6 +103,7 @@ class buildingController{
 
         try{
             const updateBuilding = await buildingService.updateBuilding(building_id,data)
+            console.log(updateBuilding)
             if(updateBuilding[0]==1){
                 util.setSuccess(200,"updated building")
                 return util.send(res)

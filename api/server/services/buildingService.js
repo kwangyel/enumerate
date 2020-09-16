@@ -12,6 +12,23 @@ class buildingService{
         }
     }
 
+    static async markBuildingComplete(id){
+        try{
+            const building = database.Building.findOne({
+                where:{id:Number(id)}
+            })
+            if(building){
+                const updatebldg = await database.Building.update(
+                    { status:"COMPLETE" },
+                    {where:{id:Number(id)}})
+                return updatebldg;
+            }
+            return null
+        }catch(err){
+            throw err
+        }
+    }
+
     static async getABuilding(id){
         try{
             const building = database.Building.findOne({
