@@ -34,7 +34,7 @@ class userService{
 	static async getAUser(cid){
 		try{
 			const user= await database.User.findOne({
-                where:{cid:Number(cid)}
+                where:{cid:cid}
             })
             return user
 		}catch(error){
