@@ -19,35 +19,47 @@ class userController{
             util.setData(null)
             
             if(cid && password){
-                const user = await userService.getAUser(cid)
-                if(!user){
-                    util.setFailure(200,"username or password incorrect")
-                    return util.send(res)
-                }
-
-                let token = jwt.sign({username:cid},
-                    process.env.SECRET_KEY,
-                    {expiresIn:"24h"})
-                
-                bcrypt.compare(password,user['password'],(err,ismatch)=>{
-                    if(err){
-                        console.log(err)
-                        util.setError(400,"an error occured")
-                        return util.send(res)
-                    }
-                    if(ismatch){
-                        util.setSuccess(200,"Logged in")
-                        util.setData({
-                            token:token,
-                            username:user['username'],
-                            id:user['id'],
-                        })
-                        return util.send(res)
+                const userd = await userService.getAUser(cid)
+                if(userd){
+                    let token = jwt.sign({username:cid},
+                        process.env.SECRET_KEY,
+                        {expiresIn:"24h"})
+                    
+                    if(password == userd['password']){
+                            util.setSuccess(200,"Logged in")
+                            util.setData({
+                                token:token,
+                                username:userd['username'],
+                                id:userd['id'],
+                            })
+                            return util.send(res)
                     }else{
-                        util.setFailure(200,"username or password incorrect")
-                        return util.send(res)
+                            util.setFailure(200,"username or password incorrect")
+                            return util.send(res)
                     }
-                })
+                }
+                util.setFailure(200,"username or password incorrect")
+                return util.send(res)
+
+                // bcrypt.compare(password,user['password'],(err,ismatch)=>{
+                //     if(err){
+                //         console.log(err)
+                //         util.setError(400,"an error occured")
+                //         return util.send(res)
+                //     }
+                //     if(ismatch){
+                //         util.setSuccess(200,"Logged in")
+                //         util.setData({
+                //             token:token,
+                //             username:user['username'],
+                //             id:user['id'],
+                //         })
+                //         return util.send(res)
+                //     }else{
+                //         util.setFailure(200,"username or password incorrect")
+                //         return util.send(res)
+                //     }
+                // })
             }else{
                 util.setError(400,"username or password not set")
                 return util.send(res)
