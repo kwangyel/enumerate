@@ -2,6 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Building = sequelize.define('Building', {
     building_number: DataTypes.INTEGER,
+    building_name:DataTypes.STRING,
     owner_name: DataTypes.STRING,
     contact: DataTypes.STRING,
     use: DataTypes.STRING,
