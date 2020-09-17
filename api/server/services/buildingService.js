@@ -11,6 +11,22 @@ class buildingService{
             throw err
         }
     }
+    static async markProgress(bid){
+        try{
+            const building = database.Building.findOne({
+                where : {id:Number(bid)}
+            })
+            if(building){
+                const updatebldg = await database.Building.update(
+                    { status:"PROGRESS" },
+                    {where:{id:Number(bid)}})
+                return updatebldg;
+            }
+            return null
+        }catch(err){
+            throw err
+        }
+    }
 
     static async markBuildingComplete(id){
         try{

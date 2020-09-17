@@ -17,6 +17,9 @@ module.exports = {
       building_id: {
         type: Sequelize.INTEGER
       },
+      remarks:{
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: true,
         type: Sequelize.DATE

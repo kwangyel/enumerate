@@ -46,6 +46,24 @@ class buildingController{
             return util.send(res)
         }
     }
+    static async markBuildingProgress(req,res){
+        const {id} = req.params
+        util.setData(null)
+
+        try{
+            const updated = await buildingService.markProgress(id)
+            if(updated){
+                util.setSuccess(200,"Marked progress")
+                return util.send(res)
+            }
+            util.setFailure(200,"Cant set progress mark")
+            return util.send(res)
+        }catch(err){
+            console.log(err)
+            util.setError(200,"error")
+            return util.send(res)
+        }
+    }
 
     static async getBuildingInZone(req,res){
         const {zoneid} = req.params

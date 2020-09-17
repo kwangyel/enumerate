@@ -11,6 +11,12 @@ module.exports = {
       hh_name: {
         type: Sequelize.STRING
       },
+      bhutanese:{
+        type: Sequelize.STRING
+      },
+      nonBhutanese:{
+        type: Sequelize.STRING
+      },
       building_id:{
         type: Sequelize.INTEGER
       },
