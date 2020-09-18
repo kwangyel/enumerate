@@ -14,6 +14,9 @@ module.exports = {
       use: {
         type: Sequelize.STRING
       },
+      unitOwnership: {
+        type: Sequelize.STRING
+      },
       building_id: {
         type: Sequelize.INTEGER
       },

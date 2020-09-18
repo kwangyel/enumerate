@@ -11,6 +11,12 @@ module.exports = {
       hh_name: {
         type: Sequelize.STRING
       },
+      cid: {
+        type: Sequelize.STRING
+      },
+      bedroomType:{
+        type: Sequelize.STRING
+      },
       bhutanese:{
         type: Sequelize.STRING
       },
